@@ -68,3 +68,12 @@ TEST(Sort, TestSort5)
   sort(vec, size);
   TEST_ASSERT_NOT_NULL(vec);
 }
+
+TEST(Sort, TestSort6)
+{
+  // Assert resulting vector's size
+  int vec[] = {3,0,-40};
+  int size = 3;
+  sort(vec, size);
+  TEST_ASSERT_TRUE( (sizeof(vec)/sizeof(vec[0])) == size);
+}
