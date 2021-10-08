@@ -59,3 +59,12 @@ TEST(Sort, TestSort4)
   sort(vec, size);
   TEST_ASSERT_EQUAL_INT_ARRAY(vec_o, vec, size);
 }
+
+TEST(Sort, TestSort5)
+{
+  // Assert that the resulting is not a NULLPTR
+  int vec[]   = {3,0,-40};
+  int size = 3;
+  sort(vec, size);
+  TEST_ASSERT_NOT_NULL(vec);
+}
