@@ -2,6 +2,14 @@
 #include "unity.h"
 #include "unity_fixture.h"
 
+// Expected results:
+// TestSort1: pass
+// TestSort2: fail
+// TestSort3: fail
+// TestSort4: pass
+// TestSort5: pass
+// TestSort6: pass
+// TestSort7: pass
 
 TEST_GROUP(Sort);
 
@@ -17,7 +25,8 @@ TEST_TEAR_DOWN(Sort)
 
 TEST(Sort, TestSort1)
 {
-  // Ok
+  // This must pass
+  // Test ordered solution
   int vec[]   = {3,1,2};
   int vec_o[] = {1,2,3};
   int size = 3;
@@ -28,7 +37,8 @@ TEST(Sort, TestSort1)
 
 TEST(Sort, TestSort2)
 {
-  // Falha - solução desordenada
+  // This must fail
+  // Test unordered solution
   int vec[]   = {3,1,2};
   int vec_o[] = {2,1,3};
   int size = 3;
@@ -39,7 +49,8 @@ TEST(Sort, TestSort2)
 
 TEST(Sort, TestSort3)
 {
-  // Falha - tamanho do vetor errado
+  // This must fail
+  // Test wrong array size
   int vec[]   = {3,1,2};
   int vec_o[] = {1,2,3};
   int size = 4;
@@ -51,7 +62,8 @@ TEST(Sort, TestSort3)
 
 TEST(Sort, TestSort4)
 {
-  // Ok
+  // This must pass
+  // Test ordered solution
   int vec[]   = {3,0,-40};
   int vec_o[] = {-40,0,3};
   int size = 3;
@@ -62,7 +74,8 @@ TEST(Sort, TestSort4)
 
 TEST(Sort, TestSort5)
 {
-  // Assert that the resulting is not a NULLPTR
+  // This must pass
+  // Assert that the resulting vector is not NULLPTR
   int vec[]   = {3,0,-40};
   int size = 3;
   sort(vec, size);
@@ -71,9 +84,21 @@ TEST(Sort, TestSort5)
 
 TEST(Sort, TestSort6)
 {
-  // Assert resulting vector's size
+  // This must pass
+  // Assert that vector's size match
   int vec[] = {3,0,-40};
   int size = 3;
   sort(vec, size);
   TEST_ASSERT_TRUE( (sizeof(vec)/sizeof(vec[0])) == size);
+}
+
+TEST(Sort, TestSort7)
+{
+  // This must pass
+  // Assert memory address hasn't changed. Pointless?
+  int vec[] = {3,0,10};
+  int size = 3;
+  int *p = &vec;
+  sort(vec, size);
+  TEST_ASSERT_EQUAL_PTR( p, vec);
 }
