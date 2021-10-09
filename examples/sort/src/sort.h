@@ -8,4 +8,4 @@
 int cmpfunc (const void * a, const void * b);
 
 
-void sort(int *vec, int s);
+void sort(int *v, int s);

@@ -15,12 +15,12 @@ int cmpfunc (const void * a, const void * b)
 	return ( *(int*)a - *(int*)b );
 }
 
-void sort(int *vec, int s)
+void sort(int *v, int s)
 {
-	qsort(vec, s, sizeof(int), cmpfunc);
+	qsort(v, s, sizeof(int), cmpfunc);
 }
 
-//#define THISMAIN
+#define THISMAIN
 #ifdef THISMAIN
 	int main(void)
 	{
