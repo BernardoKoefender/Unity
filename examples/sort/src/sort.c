@@ -20,7 +20,7 @@ void sort(int *v, int s)
 	qsort(v, s, sizeof(int), cmpfunc);
 }
 
-#define THISMAIN
+//#define THISMAIN
 #ifdef THISMAIN
 	int main(void)
 	{
