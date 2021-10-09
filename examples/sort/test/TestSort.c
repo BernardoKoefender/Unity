@@ -1,3 +1,9 @@
+//This code is based on the example "foo".
+//Authors:
+//  Bernardo Koefender            - @BernardoKoefender
+//  Frederico Arnaldo Ballve Neto - @fredballve
+//  Willian Analdo nunes          - @Willian-Nunes
+
 #include "sort.h"
 #include "unity.h"
 #include "unity_fixture.h"
