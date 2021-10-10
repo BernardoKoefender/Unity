@@ -104,7 +104,7 @@ TEST(Sort, TestSort7)
   // Assert memory address hasn't changed. Pointless?
   int vec[] = {3,0,10};
   int size = 3;
-  int *p = &vec;
+  int *p = vec;
   sort(vec, size);
-  TEST_ASSERT_EQUAL_PTR( p, vec);
+  TEST_ASSERT_EQUAL_PTR( p, &vec);
 }
