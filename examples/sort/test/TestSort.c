@@ -45,7 +45,7 @@ TEST(Sort, TestSort2)
 TEST(Sort, TestSort3)
 {
   // Test if sort is not ordering in descending order
-  int vec[]   = {3,1,2};
+  int vec[]   = {3,2,1};
   int vec_o[] = {1,2,3};
   int size = 3;
 
