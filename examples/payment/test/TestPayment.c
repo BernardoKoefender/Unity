@@ -18,7 +18,7 @@ TEST_TEAR_DOWN(Payment)
 {
 }
 
-TEST(Payment, TestPayment1)
+TEST(Payment, TestReturn0)
 {
   TEST_ASSERT_EQUAL(0, payment(0.01, (char*)"regular"));
   TEST_ASSERT_EQUAL(0, payment(99999.00, (char*)"estudante"));
@@ -26,7 +26,7 @@ TEST(Payment, TestPayment1)
   TEST_ASSERT_EQUAL(0, payment(132.57, (char*)"aposentado"));
 }
 
-TEST(Payment, TestPayment2)
+TEST(Payment, TestReturn1)
 {
   TEST_ASSERT_EQUAL(1, payment(-0.01, (char*)"VIP"));
   TEST_ASSERT_EQUAL(1, payment(0.00, (char*)"regular"));
@@ -34,7 +34,7 @@ TEST(Payment, TestPayment2)
   TEST_ASSERT_EQUAL(1, payment(999999.53, (char*)"VIP"));
 }
 
-TEST(Payment, TestPayment3)
+TEST(Payment, TestReturn2)
 {
   TEST_ASSERT_EQUAL(2, payment(45.30, (char*)"Aregular"));
   TEST_ASSERT_EQUAL(2, payment(332.10, (char*)"regulara"));
