@@ -37,6 +37,7 @@ TEST(Payment, TestReturn1)
 TEST(Payment, TestReturn2)
 {
   TEST_ASSERT_EQUAL(2, payment(45.30, (char*)"Aregular"));
+  TEST_ASSERT_EQUAL(2, payment(123.45, (char*)"vip"));
   TEST_ASSERT_EQUAL(2, payment(332.10, (char*)"regulara"));
   TEST_ASSERT_EQUAL(2, payment(1132.50, (char*)""));
   TEST_ASSERT_EQUAL(2, payment(25000.30, (char*)"idfgjapeçiokmgvalfkgjari**jgk$$/mfagmçalcbma@ekpotŕitoṕowekffla,mçvak$dnçglasngaçv,#;.mafga4p3353p3kr-"));
