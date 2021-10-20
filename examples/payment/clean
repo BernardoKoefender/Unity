@@ -1,0 +1,2 @@
+all:
+	rm -fr payment *.o cov* *.dSYM *.gcda *.gcno *.gcov *.out
