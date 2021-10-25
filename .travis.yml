@@ -8,8 +8,10 @@ addons:
       - ubuntu-toolchain-r-test
     packages:
       - gcc
+      - valgrind
+      - cppheck
 install:
   - "[ $GCC = gcc ] && export GCC=gcc || true"
 script:
-  - make -C examples/travis-identifier/ clean_all
+  - make -C examples/travis-identifier/ run_cppcheck
 #  - make test
