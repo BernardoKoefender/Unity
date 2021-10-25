@@ -9,7 +9,7 @@ addons:
     packages:
       - gcc
       - valgrind
-      - cppheck
+      - cppcheck
 install:
   - "[ $GCC = gcc ] && export GCC=gcc || true"
 script:
