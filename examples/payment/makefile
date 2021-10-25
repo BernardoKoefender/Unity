@@ -42,28 +42,37 @@ CFLAGS += -Wstrict-prototypes
 CFLAGS += -Wundef
 CFLAGS += -Wold-style-definition
 
+GCOVFLAGS  = -fprofile-arcs
+GCOVFLAGS += -ftest-coverage
+
 TARGET_BASE1=all_tests
 TARGET1 = $(TARGET_BASE1)$(TARGET_EXTENSION)
 SRC_FILES1=\
   $(UNITY_ROOT)/src/unity.c \
   $(UNITY_ROOT)/extras/fixture/src/unity_fixture.c \
-  src/payment.c \
   test/TestPayment.c \
+  src/payment.c \
   test/test_runners/TestPayment_Runner.c \
   test/test_runners/all_tests.c
 INC_DIRS=-Isrc -I$(UNITY_ROOT)/src -I$(UNITY_ROOT)/extras/fixture/src
 SYMBOLS=
 
-all: clean compile run
+all: clean clean_gcov compile run show_gcov
 
 compile:
-	$(C_COMPILER) $(CFLAGS) $(INC_DIRS) $(SYMBOLS) $(SRC_FILES1) -o $(TARGET1)
+	$(C_COMPILER) $(CFLAGS) $(INC_DIRS) $(SYMBOLS) $(SRC_FILES1) $(GCOVFLAGS) -o $(TARGET1)
 
 run:
 	- ./$(TARGET1) -v
 
 clean:
 	$(CLEANUP) $(TARGET1)
+
+clean_gcov:
+	rm -fr $(payment) *.o cov* *.dSYM *.gcda *.gcno *.gcov
+
+show_gcov:
+	gcov -b payment.gcda
 
 ci: CFLAGS += -Werror
 ci: compile

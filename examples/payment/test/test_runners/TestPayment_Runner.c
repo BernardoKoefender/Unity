@@ -9,5 +9,7 @@
 
 TEST_GROUP_RUNNER(Payment)
 {
-  RUN_TEST_CASE(Payment, TestPayment1);
+  RUN_TEST_CASE(Payment, TestReturn0);
+  RUN_TEST_CASE(Payment, TestReturn1);
+  RUN_TEST_CASE(Payment, TestReturn2);
 }

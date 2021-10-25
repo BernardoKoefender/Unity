@@ -5,51 +5,86 @@
 //  Willian Analdo Nunes          - @Willian-Nunes
 
 #include <stdio.h>
-
+#include <string.h>
 #include "payment.h"
+
+
+// regular estudante aposentado VIP
+
+// return 0 if OK
+// return 1 for value error
+// return 2 for status error
+
 
 int payment(float value, char status[15])
 {
-	// ---- Testing "value" ---- //
-	// Here we separete the float part from the int part
-	int int_part = (int)value;
-	float float_part = (value - int_part) * 100;
 
-	//float test = value % 10;
+	//  How do we check if value has more than 2 digits
+	//on the decimal part(ex: 50.555) considering that
+	//floating point errors can comprimise this?
+	//	For example: If you run payment(99.42, "VIP"), 
+	//"value" is changed to 99.419998 in the function.
 
-	printf("%f\n", float_part);
-
-
-	//printf("%d / %f\n", int_part, float_part);
-	//  Since the float part is actually the cents, it must not have more than 2 digits,
-	//otherwise, we return error code 1.
-
-	// doing this mathematically presents rounding errors. 
-	// maybe its easier if we convert value to a string.
-	//float cents_check = float_part - (int)float_part;
-	//if(cents_check != 0.0)
-	//{
-	//	return 1;
-	//}
-
-
-
-
-	// ---- Testing "status" ---- //
-
+	if(value < 0.01f)
+	{
+		return 1;
+	}
+	else if(value > 99999.00f)
+	{
+		return 1;
+	}
+	
+	//TEST_ASSERT_EQUAL(2, payment(150.34, NULL))
+	// prevents segmentation fault for empty(null) pointers
+	if(status == NULL)
+	{
+		return 2;
+	}
+	else
+	{
+		// If status is too long there is no point continuing
+		if(strlen(status) <= 10)
+		{
+			if (strcmp("regular", status) == 0)
+			{
+				return 0;
+			}
+			else if (strcmp("estudante", status) == 0)
+			{
+				return 0;
+			}
+			else if (strcmp("aposentado", status) == 0)
+			{
+				return 0;
+			}
+			else if (strcmp("VIP", status) == 0)
+			{
+				return 0;
+			}
+			else
+			{
+				return 2;
+			}
+		}
+		else
+		{
+			return 2;
+		}
+	}
 
 	return 0;
+
 }
 
 
-#define THISMAIN
+//#define THISMAIN
 #ifdef THISMAIN
 	int main(void)
 	{
-		float v = 99.432;
+		float v = 99.42;
 		char s[] = "VIP";
 		int r;
-		r = payment(v, s);
+		r = payment(v, NULL);
 		printf("Returned %d\n", r);
 		return 0;
 	}
