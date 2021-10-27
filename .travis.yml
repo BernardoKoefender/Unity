@@ -13,5 +13,5 @@ addons:
 install:
   - "[ $GCC = gcc ] && export GCC=gcc || true"
 script:
-  - make -C examples/travis-identifier/ run_cppcheck
+  - make -C examples/travis-identifier/
 #  - make test

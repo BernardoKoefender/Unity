@@ -47,6 +47,17 @@ CFLAGS += -Wold-style-definition
 GCOVFLAGS  = -fprofile-arcs
 GCOVFLAGS += -ftest-coverage
 
+CPPCHECKFLAGS  = --enable=all
+CPPCHECKFLAGS += --suppress=missingIncludeSystem
+CPPCHECKFLAGS += --suppress=unusedFunction
+
+VALGRINDFLAGS  = --leak-check=full
+VALGRINDFLAGS += --show-leak-kinds=all
+
+SANITIZERFLAGS  = -g
+SANITIZERFLAGS += -Wall
+SANITIZERFLAGS += -Wfatal-errors
+SANITIZERFLAGS += -fsanitize=address 
 
 TARGET_BASE1=all_tests
 TARGET1 = $(TARGET_BASE1)$(TARGET_EXTENSION)
@@ -60,37 +71,33 @@ SRC_FILES1=\
 INC_DIRS=-Isrc -I$(UNITY_ROOT)/src -I$(UNITY_ROOT)/extras/fixture/src
 SYMBOLS=
 
-all: clean_all run_cppcheck compile_sanitizer run_valgrind compile_unity run_unity show_gcov
+all: clean cppcheck sanitizer valgrind unity
 
 ## preciso colocar o path de todos os arquivos?????
-run_cppcheck:
-	cppcheck --enable=all --suppress=missingIncludeSystem src/main.c
+cppcheck:
+	$(info -------------------------- cppcheck)
+	cppcheck $(CPPCHECKFLAGS) src/identifier.c
 
-compile_unity:
-	$(C_COMPILER) $(CFLAGS) $(INC_DIRS) $(SYMBOLS) $(SRC_FILES1) $(GCOVFLAGS) -o $(TARGET1)
+unity:
+	$(info -------------------------- unity)
+	$(C_COMPILER) $(CFLAGS) $(INC_DIRS) $(SYMBOLS) $(SRC_FILES1) $(GCOVFLAGS) -o all_tests.out && ./all_tests.out -v && gcov -b identifier.gcda
 
-run_valgrind:
-	valgrind --leak-check=full --show-leak-kinds=all ./a.out 
+valgrind:
+	$(info -------------------------- valgrind)
+	gcc -g -Wall -Wfatal-errors src/main.c
+	valgrind $(VALGRINDFLAGS) ./a.out
 
-compile_sanitizer:
-	gcc -g -Wall -Wfatal-errors -fsanitize=address src/main.c
+sanitizer:
+	$(info -------------------------- sanitizer)
+	gcc $(SANITIZERFLAGS) src/main.c && ./a.out
 
-run_unity:
-	- ./$(TARGET1) -v
+clean:
+	$(info -------------------------- clean)
+	$(CLEANUP) $(TARGET1)
+	rm -fr $(identifier) *.o cov* *.dSYM *.gcda *.gcno *.gcov *.out
 
 graph:
 	dot -Tpng graph.gv -o graph.png && eog graph.png 
-
-clean_all: clean_out clean_gcov
-
-clean_out:
-	$(CLEANUP) $(TARGET1)
-
-clean_gcov:
-	rm -fr $(identifier) *.o cov* *.dSYM *.gcda *.gcno *.gcov *.out
-
-show_gcov:
-	gcov -b identifier.gcda
 
 ci: CFLAGS += -Werror
 ci: compile
