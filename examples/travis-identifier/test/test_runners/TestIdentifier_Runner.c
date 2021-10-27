@@ -3,6 +3,7 @@
 
 TEST_GROUP_RUNNER(Identifier)
 {
-  RUN_TEST_CASE(Identifier, TestIdentifier1);
-  RUN_TEST_CASE(Identifier, TestIdentifier2);
+  RUN_TEST_CASE(Identifier, EquivalenceClasses);
+  RUN_TEST_CASE(Identifier, LimitValues);
+  RUN_TEST_CASE(Identifier, ConditionCoverage);
 }
