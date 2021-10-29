@@ -1,18 +1,18 @@
-// ----------------------------------------------------------------
-// ESPECIFICAÇÃO: O programa deve determinar se um identificador
-// é ou não válido. Um identificador válido deve começar com uma
-// letra e conter apenas letras ou dígitos. Além disto, deve ter
-// no mínimo 1 caractere e no máximo 6 caracteres de comprimento
-// ----------------------------------------------------------------
+// ---------------------------------------------------------------- 
+// SPECIFICATION:  The function determines if a given identifier is
+// valid. A valid identifier must begin with a letter and must have
+// only letters or numbers. Also,  the length must be >= than 1 and
+// <= than 6. The function "identifier" returns 0 if the identifier
+// is valid and 1 if not.
+// ---------------------------------------------------------------- 
 
 // This code was modified to receive a string as parameter, instead
-//of reading the string with fgetc.
-
-// For this implementation, the string must end with '\n'
+//of reading user input with fgetc.
 
 #include <stdio.h>
 #include "identifier.h"
-// Used to check the first char of the string. Can only be a letter
+
+// Used to check the first char of the string. Must be a letter
 int valid_s(char ch)
 {
   if ( ((ch >= 'A') &&   // a
@@ -24,7 +24,7 @@ int valid_s(char ch)
     return 0;
 }
 
-// Used to check all chars of the string but the first. They can be letters or numbers.
+// Used to check all chars of the string but the first.
 int valid_f(char ch)
 {
   if (((ch >= 'A') &&  // a
@@ -51,11 +51,11 @@ int identifier(const char *id)
   if(valid_id)
   {
     length = 1;
-  }// shouldn't we have an 'else' that returns 1?
+  }
 
   achar = id[length];
 
-  // '\0' is for null-terminated strings, such as the one you enter in command line arguments
+  // '\0' is for null-terminated strings
   while( (achar != '\n') && (achar != '\0'))
   {
     if(!(valid_f(achar)))

@@ -30,7 +30,6 @@ TEST(Identifier, LimitValues)
 
 TEST(Identifier, ConditionCoverage)
 {
-  // could be considered also as a limit value test of valid_s and valid_f
   // valid_s
   TEST_ASSERT_EQUAL_MESSAGE(1, identifier("@A"), "Test 9 failed.");
   TEST_ASSERT_EQUAL_MESSAGE(0, identifier("ZB"), "Test 10 failed.");
@@ -39,7 +38,6 @@ TEST(Identifier, ConditionCoverage)
   TEST_ASSERT_EQUAL_MESSAGE(1, identifier("`E"), "Test 13 failed.");
   TEST_ASSERT_EQUAL_MESSAGE(0, identifier("zF"), "Test 14 failed.");
   TEST_ASSERT_EQUAL_MESSAGE(1, identifier("{G"), "Test 15 failed.");
-
   // valid_f
   TEST_ASSERT_EQUAL_MESSAGE(0, identifier("AA"), "Test 16 failed.");
   TEST_ASSERT_EQUAL_MESSAGE(1, identifier("B@"), "Test 17 failed.");
