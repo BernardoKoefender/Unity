@@ -2,20 +2,8 @@
 
 #include <stdio.h>
 
-int main(int argc, char **argv) {
-
-	int buf[10] = {0,1,2,3,4,5,6,7,8,9};
-	int result = 0;
-	int i;
-
-	for(i = 0; i <= 9; i++)
-	{
-		result += buf[i];
-	}
-
-	printf("%d\n",result);
-
-
+int main(int argc, char **argv)
+{
 	int ret_val;
 	if (argc == 1)
 	{
