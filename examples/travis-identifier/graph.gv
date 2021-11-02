@@ -2,12 +2,7 @@
 
 digraph G
 {
-	
-	//bgcolor="#282923";
 	node [shape=circle]
-	//node [shape=circle, style=filled, fontcolor="#282923"]
-	//edge [style=filled, bgcolor=white]
-	/*
 	1 -> 2
 	1 -> 3
 	2 -> 3
@@ -22,15 +17,5 @@ digraph G
 	8 -> 10
 	9 -> 11
 	10 -> 11
-	*/
-
-	1 -> 2 [label="batata", labeljust="left"]
-	1 -> 3
-	2 -> 4
-	3 -> 4
-	4 -> 5
-	4 -> 6
-	5 -> 7
-	6 -> 7
 
 }

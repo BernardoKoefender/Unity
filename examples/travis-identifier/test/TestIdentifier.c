@@ -57,4 +57,5 @@ TEST(Identifier, OtherTests)
 {
   TEST_ASSERT_EQUAL_MESSAGE(1, identifier("\n"), "Test 28 failed.");
   TEST_ASSERT_EQUAL_MESSAGE(1, identifier("\0"), "Test 29 failed.");
+  TEST_ASSERT_EQUAL_MESSAGE(1, identifier("@"), "Test ? failed.");
 }

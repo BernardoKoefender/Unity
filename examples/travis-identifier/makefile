@@ -73,7 +73,6 @@ SYMBOLS=
 
 all: clean cppcheck sanitizer valgrind unity
 
-## preciso colocar o path de todos os arquivos?????
 cppcheck:
 	$(info -------------------------- cppcheck)
 	cppcheck $(CPPCHECKFLAGS) src/identifier.c
